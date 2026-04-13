@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Madres en Equilibrio — Cursos de apoyo psicológico</title>
+
+  <!-- Tipografía -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================
+       Variables y paleta blush
+       =========================== */
+    :root{
+      --bg:#fff7f9;
+      --glass-bg: rgba(255,255,255,0.12);
+      --glass-border: rgba(255,255,255,0.18);
+      --accent-1: #f7d6dd; /* blush */
+      --accent-2: #f3cfe6; /* lila suave */
+      --accent-3: #ffd9d2; /* cálido */
+      --text:#2b2b2b;
+      --muted:#6b6b6b;
+      --cta:#ff6b8a;
+      --cta-dark:#e04f6f;
+      --card-shadow: 0 8px 30px rgba(43,30,60,0.08);
+      --glass-blur: 10px;
+      --radius:14px;
+      --glass-border-2: rgba(255,255,255,0.25);
+      --success: #4caf50;
+      --danger: #e53935;
+      --whatsapp: #25D366;
+    }
+
+    /* ===========================
+       Reset y base (mobile-first)
+       =========================== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(180deg, #fff7fb 0%, #fffaf6 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      padding-bottom:120px; /* espacio para footer flotante */
+    }
+
+    a{color:inherit;text-decoration:none}
+    img,video{max-width:100%;display:block;border-radius:10px}
+
+    /* ===========================
+       Contenedor principal
+       =========================== */
+    .container{
+      width:100%;
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px;
+    }
+
+    /* ===========================
+       Glassmorphism card
+       =========================== */
+    .glass{
+      background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border-radius:var(--radius);
+      box-shadow: var(--card-shadow);
+    }
+
+    /* ===========================
+       Header / Hero
+       =========================== */
+    header{
+      padding:28px 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      background: linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      color:#fff;
+      box-shadow: 0 6px 18px rgba(240,120,150,0.12);
+      flex-shrink:0;
+    }
+
+    .brand h1{
+      font-size:16px;
+      margin:0;
+      line-height:1;
+    }
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:10px;align-items:center}
+    .nav-link{
+      font-weight:600;
+      font-size:14px;
+      color:var(--text);
+      padding:8px 12px;
+      border-radius:10px;
+      transition:all .25s ease;
+    }
+    .nav-link:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+
+    /* ===========================
+       HERO principal
+       =========================== */
+    .hero{
+      margin:12px;
+      padding:28px;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:18px;
+    }
+
+    .hero-inner{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:flex-start;
+    }
+
+    .hero-title{
+      font-size:28px;
+      font-weight:700;
+      margin:0;
+      line-height:1.05;
+      background: linear-gradient(90deg,#ff6b8a,#b57bd6);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      letter-spacing:-0.5px;
+    }
+
+    .hero-sub{
+      font-size:15px;
+      color:var(--muted);
+      margin:0;
+      max-width:680px;
+    }
+
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:6px;
+    }
+
+    /* Botones 3D */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:600;
+      cursor:pointer;
+      border:none;
+      transition:transform .18s cubic-bezier(.2,.9,.3,1), box-shadow .18s;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transform:translateY(0);
+      background:linear-gradient(180deg,var(--cta),var(--cta-dark));
+      color:#fff;
+    }
+    .btn.secondary{
+      background: linear-gradient(180deg,#fff,#fff);
+      color:var(--cta-dark);
+      border:1px solid rgba(200,150,160,0.18);
+      box-shadow: 0 6px 18px rgba(200,150,160,0.06);
+    }
+    .btn:active{transform:translateY(1px)}
+    .btn:hover{
+      transform:translateY(-6px);
+      box-shadow: 0 18px 40px rgba(200,80,120,0.12);
+    }
+
+    /* Hero media */
+    .hero-media{
+      width:100%;
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid var(--glass-border-2);
+    }
+
+    /* ===========================
+       Cursos (cards)
+       =========================== */
+    .courses{
+      margin:18px 12px;
+      display:grid;
+      grid-template-columns:1fr;
+      gap:14px;
+    }
+
+    .course-card{
+      display:flex;
+      gap:12px;
+      padding:12px;
+      align-items:flex-start;
+      border-radius:12px;
+      transition:transform .25s ease, box-shadow .25s ease;
+      overflow:hidden;
+      position:relative;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+    .course-card:hover{
+      transform:translateY(-8px);
+      box-shadow: 0 22px 50px rgba(40,20,40,0.08);
+    }
+
+    .course-media{flex:0 0 160px;border-radius:10px;overflow:hidden}
+    .course-body{flex:1;display:flex;flex-direction:column;gap:8px}
+    .course-title{font-weight:700;margin:0;font-size:16px}
+    .course-desc{margin:0;color:var(--muted);font-size:14px}
+    .course-meta{display:flex;gap:12px;align-items:center;margin-top:6px}
+    .price{
+      font-weight:700;
+      color:var(--cta-dark);
+      background:linear-gradient(90deg,#ff6b8a,#b57bd6);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+
+    .buy-btn{margin-left:auto}
+
+    /* Lista de cápsulas */
+    .capsules{
+      margin-top:10px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .capsule{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding:8px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .capsule .title{font-weight:600;font-size:14px}
+    .capsule .meta{font-size:13px;color:var(--muted);margin-left:auto;display:flex;gap:8px;align-items:center}
+
+    /* Descargas */
+    .download-btn{
+      padding:8px 10px;
+      border-radius:8px;
+      background:linear-gradient(180deg,#fff,#fff);
+      border:1px solid rgba(200,150,160,0.12);
+      color:var(--cta-dark);
+      font-weight:600;
+      cursor:pointer;
+      transition:transform .15s, box-shadow .15s;
+    }
+    .download-btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(200,120,150,0.08)}
+
+    /* ===========================
+       Modal (compra / login)
+       =========================== */
+    .modal{
+      position:fixed;
+      inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1200;
+      padding:20px;
+    }
+    .modal.open{display:flex}
+    .modal-backdrop{
+      position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,0.35),rgba(10,10,10,0.45));
+      backdrop-filter: blur(2px);
+    }
+    .modal-card{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:760px;
+      padding:18px;
+      border-radius:14px;
+    }
+
+    /* Payment options */
+    .payments{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .payment-option{
+      flex:1 1 160px;
+      padding:12px;
+      border-radius:12px;
+      text-align:center;
+      cursor:pointer;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:transform .15s, box-shadow .15s;
+      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
+    }
+    .payment-option:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.06)}
+    .payment-option img{height:28px;opacity:0.95}
+
+    /* ===========================
+       Mis cursos (simulación)
+       =========================== */
+    .my-courses{margin:18px 12px;padding:14px;border-radius:12px}
+    .empty{color:var(--muted);font-style:italic}
+
+    /* ===========================
+       Footer
+       =========================== */
+    footer{
+      position:fixed;
+      left:0;right:0;bottom:0;
+      padding:14px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      border-top:1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+    .footer-left{display:flex;gap:12px;align-items:center}
+    .footer-right{display:flex;gap:12px;align-items:center}
+
+    /* WhatsApp flotante */
+    .whatsapp{
+      position:fixed;
+      right:18px;
+      bottom:86px;
+      z-index:1400;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-direction:column;
+    }
+    .whatsapp a{
+      width:56px;height:56px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      background:var(--whatsapp);color:#fff;font-weight:700;
+      box-shadow:0 12px 30px rgba(37,211,102,0.18);
+      transition:transform .18s;
+    }
+    .whatsapp a:hover{transform:translateY(-6px)}
+
+    /* Calendly embed responsive */
+    .calendly{
+      width:100%;
+      height:640px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    /* ===========================
+       Utilities y animaciones
+       =========================== */
+    .fade-in{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal{opacity:1;transform:translateY(0)}
+    .small{font-size:13px;color:var(--muted)}
+    .pill{padding:6px 10px;border-radius:999px;background:linear-gradient(90deg,#fff,#fff);font-weight:600;color:var(--cta-dark)}
+
+    /* Responsive (desktop) */
+    @media(min-width:900px){
+      .hero{grid-template-columns:1fr 420px;align-items:center;padding:36px}
+      .hero-title{font-size:40px}
+      .courses{grid-template-columns:1fr 1fr;gap:18px}
+      .course-media{flex:0 0 220px}
+      .modal-card{padding:24px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===========================
+       Header
+       =========================== -->
+  <header class="container">
+    <div class="brand">
+      <div class="logo glass">ME</div>
+      <div>
+        <h1>Madres en Equilibrio</h1>
+        <p>Apoyo psicológico profesional para madres</p>
+      </div>
+    </div>
+
+    <nav>
+      <a class="nav-link" href="#cursos">Cursos</a>
+      <a class="nav-link" href="#por-que">Por qué elegirnos</a>
+      <a class="nav-link" href="#agenda">Agenda</a>
+      <a class="nav-link" href="#mis-cursos">Mis cursos</a>
+      <button class="btn" id="cta-top">Comenzar ahora</button>
+    </nav>
+  </header>
+
+  <!-- ===========================
+       HERO
+       =========================== -->
+  <main class="container">
+    <section class="hero glass fade-in" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <h2 id="hero-title" class="hero-title">Cursos online para madres que buscan equilibrio emocional</h2>
+        <p class="hero-sub">Programas prácticos y cálidos, diseñados por psicólogas especialistas en maternidad. Aprende a gestionar emociones, recuperar tu espacio y fortalecer vínculos con herramientas concretas.</p>
+
+        <div class="hero-cta">
+          <button class="btn" id="ver-cursos">Ver cursos</button>
+          <button class="btn secondary" id="contacto-cta">Hablar con un asesor</button>
+        </div>
+
+        <div class="small">Pago seguro • Acceso inmediato • Material descargable</div>
+      </div>
+
+      <div class="hero-media glass" aria-hidden="true">
+        <!-- Video preview hero -->
+        <video playsinline muted autoplay loop poster="" style="width:100%;height:100%;object-fit:cover;">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- ===========================
+         Sección Cursos (principal)
+         =========================== -->
+    <section id="cursos" class="courses" aria-label="Cursos disponibles">
+      <!-- Cards se generan por JS -->
+    </section>
+
+    <!-- ===========================
+         Mis cursos (simulación de acceso)
+         =========================== -->
+    <section id="mis-cursos" class="my-courses glass fade-in" aria-labelledby="mis-cursos-title" style="margin-top:18px;">
+      <h3 id="mis-cursos-title" style="margin:0 0 10px 0">Mis cursos</h3>
+      <div id="myCoursesList" class="small empty">No has comprado cursos aún. Encuentra el curso ideal arriba.</div>
+    </section>
+
+    <!-- ===========================
+         Por qué elegirnos
+         =========================== -->
+    <section id="por-que" class="glass fade-in" style="margin:18px 12px;padding:18px;border-radius:14px;">
+      <h3 style="margin-top:0">Por qué elegirnos</h3>
+      <div style="display:flex;gap:12px;flex-direction:column">
+        <div class="pill">Profesionales acreditadas</div>
+        <p class="small" style="margin:0">Equipo de psicólogas con experiencia en maternidad, crianza y salud mental perinatal.</p>
+
+        <div class="pill">Metodología práctica</div>
+        <p class="small" style="margin:0">Cápsulas breves, ejercicios descargables y seguimiento para aplicar lo aprendido.</p>
+
+        <div class="pill">Comunidad y contención</div>
+        <p class="small" style="margin:0">Espacios seguros y materiales diseñados para acompañarte con calidez.</p>
+      </div>
+    </section>
+
+    <!-- ===========================
+         Agenda (Calendly embed)
+         =========================== -->
+    <section id="agenda" class="fade-in" style="margin:18px 12px;">
+      <h3 style="margin:6px 0 12px 0">Agenda una sesión informativa</h3>
+      <div class="glass calendly">
+        <!-- Calendly embed (iframe) - reemplazar data-url con tu enlace -->
+        <iframe src="https://calendly.com/" title="Calendly" style="width:100%;height:100%;border:0"></iframe>
+      </div>
+    </section>
+
+    <!-- ===========================
+         Testimonios (opcional)
+         =========================== -->
+    <section id="testimonios" class="fade-in" style="margin:18px 12px;">
+      <h3 style="margin:6px 0 12px 0">Testimonios</h3>
+      <div style="display:grid;grid-template-columns:1fr;gap:12px">
+        <div class="glass" style="padding:12px">
+          <strong>María, 34 años</strong>
+          <p class="small" style="margin:6px 0 0 0">"Las cápsulas me ayudaron a recuperar mi calma y a conectar con mi hijo desde otro lugar."</p>
+        </div>
+        <div class="glass" style="padding:12px">
+          <strong>Carolina, 29 años</strong>
+          <p class="small" style="margin:6px 0 0 0">"Material práctico, ejercicios claros y un acompañamiento muy humano."</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===========================
+       Modal para compra / opciones
+       =========================== -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-card glass">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700" id="modalCourseInitial">C</div>
+        <div>
+          <h4 id="modalCourseTitle" style="margin:0">Título del curso</h4>
+          <div class="small" id="modalCoursePrice">CLP $0</div>
+        </div>
+        <button style="margin-left:auto" class="btn secondary" id="modalClose">Cerrar</button>
+      </div>
+
+      <p class="small" style="margin-top:12px">Selecciona tu método de pago. Esta demo simula la integración y envía una petición a un webhook de prueba.</p>
+
+      <div class="payments" id="paymentOptions">
+        <div class="payment-option" data-method="webpay">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Webpay_logo.png" alt="Webpay" onerror="this.style.opacity=0.6">
+          <div class="small">Webpay (Chile)</div>
+        </div>
+        <div class="payment-option" data-method="mercadopago">
+          <img src="https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.0/mercadopago/logo.svg" alt="MercadoPago" onerror="this.style.opacity=0.6">
+          <div class="small">MercadoPago</div>
+        </div>
+        <div class="payment-option" data-method="stripe">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" onerror="this.style.opacity=0.6">
+          <div class="small">Stripe</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+        <button class="btn" id="confirmPayment">Pagar ahora</button>
+        <div class="small" id="paymentStatus" style="margin-left:6px;color:var(--muted)">Método seleccionado: <span id="selectedMethod">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================
+       Formulario de contacto (webhook)
+       =========================== -->
+  <section style="margin:18px 12px;">
+    <div class="glass" style="padding:14px">
+      <h3 style="margin:0 0 8px 0">Contacto y automatización</h3>
+      <p class="small" style="margin:0 0 12px 0">Déjanos tus datos y te contactamos. Este formulario envía datos a un webhook (Make/Zapier) mediante fetch.</p>
+
+      <form id="contactForm" class="small" style="display:grid;gap:8px">
+        <input type="text" name="name" placeholder="Tu nombre" required style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)">
+        <input type="email" name="email" placeholder="Correo electrónico" required style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)">
+        <textarea name="message" placeholder="¿En qué podemos ayudarte?" rows="3" style="padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06)"></textarea>
+
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn" type="submit">Enviar</button>
+          <div id="contactStatus" class="small" style="color:var(--muted)">No enviado</div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===========================
+       WhatsApp flotante
+       =========================== -->
+  <div class="whatsapp" aria-hidden="false">
+    <a href="https://wa.me/56900000000?text=Hola%20quiero%20más%20info%20sobre%20los%20cursos" target="_blank" rel="noopener" title="Escríbenos por WhatsApp">
+      <!-- Icono simple -->
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M20.52 3.48A11.94 11.94 0 0012 0C5.373 0 .01 5.373.01 12.001 0 14.112.5 16.12 1.44 17.86L0 24l6.39-1.66A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.2-1.25-6.16-3.48-8.52z" fill="#fff" opacity="0.06"/>
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.149-.672.15-.198.297-.768.967-.942 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.885-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.173.198-.298.298-.497.099-.198.05-.372-.025-.52-.074-.149-.672-1.62-.92-2.22-.242-.58-.487-.5-.672-.51l-.573-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.064 2.876 1.213 3.074c.149.198 2.095 3.2 5.077 4.487 0 0 .0.0.0.0.297.132.53.21.712.27.3.09.573.074.79.045.24-.03.758-.31.866-.61.108-.298.108-.553.075-.61-.033-.06-.12-.09-.297-.149z" fill="#fff"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- ===========================
+       Footer
+       =========================== -->
+  <footer>
+    <div class="footer-left">
+      <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">ME</div>
+      <div style="font-size:13px">
+        <div><strong>Madres en Equilibrio</strong></div>
+        <div class="small">Apoyo psicológico profesional • CL</div>
+      </div>
+    </div>
+
+    <div class="footer-right small">
+      <div>Política de privacidad</div>
+      <div>•</div>
+      <div>Contacto</div>
+    </div>
+  </footer>
+
+  <!-- ===========================
+       JavaScript funcional
+       =========================== -->
+  <script>
+    /* ===========================
+       Datos de ejemplo (simulación)
+       =========================== */
+    const COURSES = [
+      {
+        id: 'curso-1',
+        title: 'Recupera tu calma: herramientas para la maternidad',
+        description: 'Cápsulas prácticas para gestionar ansiedad, culpa y agotamiento en la maternidad.',
+        price: 49000, // CLP
+        preview: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        capsules: [
+          {id:'c1-1', title:'Introducción y objetivos', duration:'6:12'},
+          {id:'c1-2', title:'Respiración y regulación emocional', duration:'12:04'},
+          {id:'c1-3', title:'Límites y autocuidado', duration:'14:20'}
+        ],
+        materials: [
+          {capsuleId:'c1-1', type:'PDF', name:'Guía rápida - Introducción'},
+          {capsuleId:'c1-2', type:'Workbook', name:'Ejercicios respiración'},
+          {capsuleId:'c1-3', type:'Ejercicio', name:'Plan de autocuidado'}
+        ]
+      },
+      {
+        id: 'curso-2',
+        title: 'Vínculos seguros: crianza con apego y límites',
+        description: 'Estrategias para fortalecer el vínculo con tu hijo sin perder tu identidad.',
+        price: 59000,
+        preview: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        capsules: [
+          {id:'c2-1', title:'Apego seguro explicado', duration:'10:00'},
+          {id:'c2-2', title:'Comunicación emocional', duration:'11:30'},
+          {id:'c2-3', title:'Rutinas y límites amorosos', duration:'13:45'}
+        ],
+        materials: [
+          {capsuleId:'c2-1', type:'PDF', name:'Resumen apego seguro'},
+          {capsuleId:'c2-2', type:'Workbook', name:'Ejercicios de comunicación'},
+          {capsuleId:'c2-3', type:'Ejercicio', name:'Rutina familiar'}
+        ]
+      }
+    ];
+
+    /* ===========================
+       Utilidades
+       =========================== */
+    const formatCLP = (n) => {
+      return new Intl.NumberFormat('es-CL', {style:'currency', currency:'CLP'}).format(n);
+    };
+
+    /* ===========================
+       Render de cursos
+       =========================== */
+    const coursesContainer = document.getElementById('cursos');
+
+    function createCourseCard(course){
+      const card = document.createElement('article');
+      card.className = 'course-card glass fade-in';
+      card.setAttribute('data-id', course.id);
+
+      card.innerHTML = `
+        <div class="course-media">
+          <video controls preload="metadata" poster="" style="width:100%;height:100%;object-fit:cover;">
+            <source src="${course.preview}" type="video/mp4">
+            Tu navegador no soporta video.
+          </video>
+        </div>
+        <div class="course-body">
+          <h4 class="course-title">${course.title}</h4>
+          <p class="course-desc">${course.description}</p>
+          <div class="course-meta">
+            <div class="price">${formatCLP(course.price)}</div>
+            <div class="small">Acceso inmediato</div>
+            <button class="btn buy-btn" data-id="${course.id}">Comprar</button>
+          </div>
+
+          <div class="capsules" aria-hidden="false">
+            ${course.capsules.map(c => `
+              <div class="capsule">
+                <div style="width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--accent-2),var(--accent-3));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${c.title.split(' ').slice(0,1)[0].slice(0,1)}</div>
+                <div class="title">${c.title}</div>
+                <div class="meta">${c.duration} <button class="download-btn" data-course="${course.id}" data-capsule="${c.id}">Descargar material</button></div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      return card;
+    }
+
+    // Render inicial
+    COURSES.forEach(c => coursesContainer.appendChild(createCourseCard(c)));
+
+    /* ===========================
+       Scroll reveal (IntersectionObserver)
+       =========================== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('reveal');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    /* ===========================
+       Modal y flujo de compra (simulado)
+       =========================== */
+    const modal = document.getElementById('modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modalClose');
+    const modalCourseTitle = document.getElementById('modalCourseTitle');
+    const modalCoursePrice = document.getElementById('modalCoursePrice');
+    const modalCourseInitial = document.getElementById('modalCourseInitial');
+    const paymentOptions = document.getElementById('paymentOptions');
+    const selectedMethodEl = document.getElementById('selectedMethod');
+    const confirmPayment = document.getElementById('confirmPayment');
+    const paymentStatus = document.getElementById('paymentStatus');
+
+    let currentCourse = null;
+    let selectedMethod = null;
+
+    // Abrir modal al hacer click en comprar
+    document.body.addEventListener('click', (e) => {
+      const buy = e.target.closest('.buy-btn');
+      if(buy){
+        const id = buy.dataset.id;
+        openPurchaseModal(id);
+      }
+    });
+
+    function openPurchaseModal(courseId){
+      currentCourse = COURSES.find(c => c.id === courseId);
+      if(!currentCourse) return;
+      modalCourseTitle.textContent = currentCourse.title;
+      modalCoursePrice.textContent = formatCLP(currentCourse.price);
+      modalCourseInitial.textContent = currentCourse.title.split(' ').map(w=>w[0]).slice(0,2).join('');
+      selectedMethod = null;
+      selectedMethodEl.textContent = '—';
+      paymentStatus.textContent = 'Método seleccionado: —';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    }
+
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', closeModal);
+
+    // Selección de método
+    paymentOptions.addEventListener('click', (e) => {
+      const opt = e.target.closest('.payment-option');
+      if(!opt) return;
+      selectedMethod = opt.dataset.method;
+      selectedMethodEl.textContent = selectedMethod;
+      paymentStatus.textContent = 'Método seleccionado: ' + selectedMethod;
+      // microinteracción: resaltar
+      document.querySelectorAll('.payment-option').forEach(p => p.style.boxShadow = '');
+      opt.style.boxShadow = '0 14px 40px rgba(0,0,0,0.08)';
+    });
+
+    // Confirmar pago (simulado) -> envía a webhook y guarda en localStorage
+    confirmPayment.addEventListener('click', async () => {
+      if(!currentCourse) return alert('Selecciona un curso.');
+      if(!selectedMethod) return alert('Selecciona un método de pago.');
+
+      confirmPayment.disabled = true;
+      confirmPayment.textContent = 'Procesando...';
+
+      // Payload preparado para integración con webhooks y webpay/mercadopago/stripe
+      const payload = {
+        event: 'purchase_initiated',
+        courseId: currentCourse.id,
+        courseTitle: currentCourse.title,
+        amount: currentCourse.price,
+        currency: 'CLP',
+        paymentMethod: selectedMethod,
+        timestamp: new Date().toISOString(),
+        // user info (simulado)
+        user: {
+          id: 'guest',
+          email: null
+        }
+      };
+
+      // Endpoint webhook (reemplazar por tu webhook real en Make/Zapier)
+      const WEBHOOK_URL = 'https://example.com/webhook/payment'; // <-- reemplazar
+
+      try{
+        // Envío al webhook (simulación). En producción, aquí se integraría con el SDK de cada pasarela.
+        await fetch(WEBHOOK_URL, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        }).catch(()=>{/* ignorar fallo en demo */});
+
+        // Simular respuesta de pago exitoso
+        const purchaseRecord = {
+          id: 'p_' + Date.now(),
+          courseId: currentCourse.id,
+          title: currentCourse.title,
+          purchasedAt: new Date().toISOString(),
+          method: selectedMethod
+        };
+
+        // Guardar en localStorage (simulación de "Mis cursos")
+        const owned = JSON.parse(localStorage.getItem('ownedCourses') || '[]');
+        owned.push(purchaseRecord);
+        localStorage.setItem('ownedCourses', JSON.stringify(owned));
+
+        // Actualizar UI
+        renderMyCourses();
+        alert('Pago simulado exitoso. Acceso concedido a "' + currentCourse.title + '".');
+        closeModal();
+      }catch(err){
+        console.error(err);
+        alert('Ocurrió un error procesando el pago. Intenta nuevamente.');
+      }finally{
+        confirmPayment.disabled = false;
+        confirmPayment.textContent = 'Pagar ahora';
+      }
+    });
+
+    /* ===========================
+       Mis cursos: render y acceso
+       =========================== */
+    const myCoursesList = document.getElementById('myCoursesList');
+
+    function renderMyCourses(){
+      const owned = JSON.parse(localStorage.getItem('ownedCourses') || '[]');
+      if(!owned.length){
+        myCoursesList.classList.add('empty');
+        myCoursesList.textContent = 'No has comprado cursos aún. Encuentra el curso ideal arriba.';
+        return;
+      }
+      myCoursesList.classList.remove('empty');
+      myCoursesList.innerHTML = owned.map(o => {
+        const c = COURSES.find(cc => cc.id === o.courseId) || {};
+        return `
+          <div style="display:flex;align-items:center;gap:12px;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.04);margin-bottom:8px">
+            <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${(c.title||'C').split(' ').map(w=>w[0]).slice(0,2).join('')}</div>
+            <div style="flex:1">
+              <div style="font-weight:700">${o.title}</div>
+              <div class="small">Comprado: ${new Date(o.purchasedAt).toLocaleString()}</div>
+            </div>
+            <div style="display:flex;gap:8px">
+              <button class="btn" data-action="open-course" data-course="${o.courseId}">Ir al curso</button>
+              <button class="btn secondary" data-action="download-all" data-course="${o.courseId}">Descargar todo</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Abrir curso (simulado)
+    document.body.addEventListener('click', (e) => {
+      const open = e.target.closest('[data-action="open-course"]');
+      if(open){
+        const courseId = open.dataset.course;
+        openCourseViewer(courseId);
+      }
+      const dlAll = e.target.closest('[data-action="download-all"]');
+      if(dlAll){
+        const courseId = dlAll.dataset.course;
+        downloadAllMaterials(courseId);
+      }
+    });
+
+    function openCourseViewer(courseId){
+      const course = COURSES.find(c => c.id === courseId);
+      if(!course) return alert('Curso no encontrado.');
+      // Mostrar modal con lista de cápsulas y materiales
+      currentCourse = course;
+      modalCourseTitle.textContent = course.title;
+      modalCoursePrice.textContent = 'Acceso concedido';
+      modalCourseInitial.textContent = course.title.split(' ').map(w=>w[0]).slice(0,2).join('');
+      selectedMethod = 'acceso';
+      selectedMethodEl.textContent = 'Acceso';
+      paymentStatus.textContent = 'Acceso: comprado';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+
+      // Reemplazar payments por lista de cápsulas con botones de reproducción y descarga
+      const paymentsDiv = document.getElementById('paymentOptions');
+      paymentsDiv.innerHTML = course.capsules.map(cap => `
+        <div style="padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);display:flex;align-items:center;gap:10px">
+          <div style="width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent-2),var(--accent-3));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700">${cap.title.split(' ').slice(0,1)[0].slice(0,1)}</div>
+          <div style="flex:1">
+            <div style="font-weight:700">${cap.title}</div>
+            <div class="small">${cap.duration}</div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn" data-action="play" data-course="${course.id}" data-capsule="${cap.id}">Reproducir</button>
+            <button class="download-btn" data-course="${course.id}" data-capsule="${cap.id}">Descargar material</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ===========================
+       Descargas: simulación de PDFs/Workbooks
+       =========================== */
+    // Genera un PDF/archivo simulado y fuerza la descarga
+    function generateAndDownload(filename, content){
+      const blob = new Blob([content], {type:'application/pdf'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    // Manejo de botones de descarga en cápsulas
+    document.body.addEventListener('click', (e) => {
+      const dl = e.target.closest('.download-btn');
+      if(!dl) return;
+      const courseId = dl.dataset.course;
+      const capsuleId = dl.dataset.capsule;
+      // Buscar material correspondiente
+      const course = COURSES.find(c => c.id === courseId);
+      if(!course) return alert('Material no encontrado.');
+      const mat = course.materials.find(m => m.capsuleId === capsuleId) || course.materials[0];
+      const filename = `${course.title} - ${mat.name}.pdf`.replace(/\s+/g,'_');
+      const content = `Material: ${mat.name}\nCurso: ${course.title}\nGenerado: ${new Date().toLocaleString()}\n\nEjercicios y notas.`;
+      generateAndDownload(filename, content);
+    });
+
+    // Descargar todo
+    function downloadAllMaterials(courseId){
+      const course = COURSES.find(c => c.id === courseId);
+      if(!course) return;
+      course.materials.forEach((m, idx) => {
+        const filename = `${course.title} - ${m.name}.pdf`.replace(/\s+/g,'_');
+        const content = `Material: ${m.name}\nCurso: ${course.title}\nGenerado: ${new Date().toLocaleString()}\n\nEjercicios y notas.`;
+        // Pequeña demora para no bloquear
+        setTimeout(()=> generateAndDownload(filename, content), idx * 300);
+      });
+    }
+
+    /* ===========================
+       Contact form -> webhook (Make/Zapier)
+       =========================== */
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+      const payload = {
+        event: 'contact_form',
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message'),
+        timestamp: new Date().toISOString()
+      };
+
+      // Webhook URL (reemplazar por tu webhook real)
+      const CONTACT_WEBHOOK = 'https://example.com/webhook/contact'; // <-- reemplazar
+
+      contactStatus.textContent = 'Enviando...';
+      try{
+        const res = await fetch(CONTACT_WEBHOOK, {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        // En demo, no dependemos de la respuesta real
+        contactStatus.textContent = 'Enviado. Te contactaremos pronto.';
+        contactForm.reset();
+      }catch(err){
+        console.error(err);
+        contactStatus.textContent = 'Error al enviar. Intenta más tarde.';
+      }
+    });
+
+    /* ===========================
+       Inicializar UI
+       =========================== */
+    document.getElementById('ver-cursos').addEventListener('click', () => {
+      document.getElementById('cursos').scrollIntoView({behavior:'smooth'});
+    });
+    document.getElementById('cta-top').addEventListener('click', () => {
+      document.getElementById('agenda').scrollIntoView({behavior:'smooth'});
+    });
+    document.getElementById('contacto-cta').addEventListener('click', () => {
+      document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});
+    });
+
+    // Cargar "Mis cursos" al inicio
+    renderMyCourses();
+
+    /* ===========================
+       Microinteracciones: hover suave en botones (accesibilidad)
+       =========================== */
+    document.querySelectorAll('.btn').forEach(b => {
+      b.addEventListener('keydown', (e) => {
+        if(e.key === 'Enter' || e.key === ' ') b.click();
+      });
+    });
+
+    /* ===========================
+       Preparación para integraciones reales
+       ===========================
+       - Los botones de pago están preparados con data-method para integrar Webpay, MercadoPago o Stripe.
+       - Para Webpay: implementar endpoint que genere token y redireccione al checkout.
+       - Para MercadoPago: usar SDK o crear preferencia y redirigir.
+       - Para Stripe: crear Checkout Session en backend y redirigir.
+       - Webhooks: los endpoints deben validar firma y actualizar el estado de la compra.
+       - Este demo envía un payload al webhook (WEBHOOK_URL) para que Make/Zapier lo reciba.
+       =========================== */
+
+  </script>
+</body>
+</html>
